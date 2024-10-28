@@ -1,3 +1,7 @@
+# Temporary files
 *.tmp
+# Python
 **/__pycache__
 **/.pytest_cache
+# Test coverage reports
+htmlcov
