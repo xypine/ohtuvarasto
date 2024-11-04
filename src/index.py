@@ -1,27 +1,33 @@
 from varasto import Varasto
 
 
-def main():
+def init():
     mehua = Varasto(100.0)
     olutta = Varasto(100.0, 20.2)
-
     print("Luonnin jälkeen:")
     print(f"Mehuvarasto: {mehua}")
     print(f"Olutvarasto: {olutta}")
+    return mehua, olutta
 
+
+def olut_getters(varasto):
     print("Olut getterit:")
-    print(f"saldo = {olutta.saldo}")
-    print(f"tilavuus = {olutta.tilavuus}")
-    print(f"paljonko_mahtuu = {olutta.paljonko_mahtuu()}")
+    print(f"saldo = {varasto.saldo}")
+    print(f"tilavuus = {varasto.tilavuus}")
+    print(f"paljonko_mahtuu = {varasto.paljonko_mahtuu()}")
 
+
+def mehu_setters(varasto):
     print("Mehu setterit:")
     print("Lisätään 50.7")
-    mehua.lisaa_varastoon(50.7)
-    print(f"Mehuvarasto: {mehua}")
+    varasto.lisaa_varastoon(50.7)
+    print(f"Mehuvarasto: {varasto}")
     print("Otetaan 3.14")
-    mehua.ota_varastosta(3.14)
-    print(f"Mehuvarasto: {mehua}")
+    varasto.ota_varastosta(3.14)
+    print(f"Mehuvarasto: {varasto}")
 
+
+def virheelliset():
     print("Virhetilanteita:")
     print("Varasto(-100.0);")
     huono = Varasto(-100.0)
@@ -31,27 +37,46 @@ def main():
     huono = Varasto(100.0, -50.7)
     print(huono)
 
-    print(f"Olutvarasto: {olutta}")
-    print("olutta.lisaa_varastoon(1000.0)")
-    olutta.lisaa_varastoon(1000.0)
-    print(f"Olutvarasto: {olutta}")
 
-    print(f"Mehuvarasto: {mehua}")
-    print("mehua.lisaa_varastoon(-666.0)")
-    mehua.lisaa_varastoon(-666.0)
-    print(f"Mehuvarasto: {mehua}")
+def suuri_lisays(varasto):
+    print(f"{varasto} ennen suurta lisäystä")
+    print("Lisätään 1000.0")
+    varasto.lisaa_varastoon(1000.0)
+    print(f"{varasto} lisäyksen jälkeen")
 
-    print(f"Olutvarasto: {olutta}")
-    print("olutta.ota_varastosta(1000.0)")
-    saatiin = olutta.ota_varastosta(1000.0)
+
+def negatiivinen_lisays(varasto):
+    print(f"{varasto} ennen negatiivista lisäystä")
+    print("Lisätään -666.0")
+    varasto.lisaa_varastoon(-666.0)
+    print(f"{varasto} lisäyksen jälkeen")
+
+
+def suuri_poisto(varasto):
+    print(f"{varasto} ennen suurta poistoa")
+    print("Otetaan 1000.0")
+    saatiin = varasto.ota_varastosta(1000.0)
     print(f"saatiin {saatiin}")
-    print(f"Olutvarasto: {olutta}")
+    print(f"{varasto} poiston jälkeen")
 
-    print(f"Mehuvarasto: {mehua}")
-    print("mehua.otaVarastosta(-32.9)")
-    saatiin = mehua.ota_varastosta(-32.9)
+
+def negatiivinen_poisto(varasto):
+    print(f"{varasto} ennen negatiivista poistoa")
+    print("Otetaan -32.9")
+    saatiin = varasto.ota_varastosta(-32.9)
     print(f"saatiin {saatiin}")
-    print(f"Mehuvarasto: {mehua}")
+    print(f"{varasto} poiston jälkeen")
+
+
+def main():
+    mehua, olutta = init()
+    olut_getters(olutta)
+    mehu_setters(mehua)
+    virheelliset()
+    suuri_lisays(olutta)
+    negatiivinen_lisays(mehua)
+    suuri_poisto(olutta)
+    negatiivinen_poisto(mehua)
 
 
 if __name__ == "__main__":
