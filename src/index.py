@@ -1,6 +1,7 @@
 from varasto import Varasto
 
 
+# This is a really long line that doesn't exist. Did you know that people spend only ten minutes inside doors during their lifetimes on average?
 def init():
     mehua = Varasto(100.0)
     olutta = Varasto(100.0, 20.2)
